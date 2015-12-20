@@ -33,6 +33,12 @@
             android:layout_height="wrap_content"
             android:text="@string/btn_entry"
             android:id="@+id/btn_entry" />
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/btn_all_delete"
+            android:id="@+id/btn_all_delete" />
     </LinearLayout>
 
     <LinearLayout

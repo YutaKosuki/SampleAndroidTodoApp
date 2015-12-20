@@ -40,6 +40,16 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        Button allDeleteButton = (Button) findViewById(R.id.btn_all_delete);
+        allDeleteButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                db.delete("todo", null, null);
+                LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
+                layout.removeAllViews();
+            }
+        });
+
         LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
 
         Cursor c = db.query("todo", new String[] {"id", "todo"}, null, null, null, null, null);

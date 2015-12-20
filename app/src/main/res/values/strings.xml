@@ -2,4 +2,5 @@
     <string name="app_name">SampleAndroidTodoApp</string>
     <string name="todo_name">Todo</string>
     <string name="btn_entry">登録</string>
+    <string name="btn_all_delete">全て削除</string>
 </resources>
