@@ -9,7 +9,7 @@ import android.database.sqlite.SQLiteOpenHelper;
  */
 public class MyOpenHelper extends SQLiteOpenHelper {
     public MyOpenHelper(Context context) {
-        super(conte, "TodoDB", null);
+        super(context, "TodoDB", null, 1);
     }
 
     @Override
