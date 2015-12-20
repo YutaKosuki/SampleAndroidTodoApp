@@ -32,6 +32,11 @@ public class MainActivity extends AppCompatActivity {
                 ContentValues insertValues = new ContentValues();
                 insertValues.put("todo", todo);
                 long id = db.insert("todo", todo, insertValues);
+
+                LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
+                TextView textView = new TextView(MainActivity.this);
+                textView.setText(String.format("id:%s, todo:%s", id, todo));
+                layout.addView(textView);
             }
         });
 
