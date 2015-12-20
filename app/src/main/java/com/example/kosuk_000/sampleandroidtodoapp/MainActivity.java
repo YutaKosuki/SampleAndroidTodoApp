@@ -1,12 +1,15 @@
 package com.example.kosuk_000.sampleandroidtodoapp;
 
 import android.content.ContentValues;
+import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
+import android.widget.LinearLayout;
+import android.widget.TextView;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -31,5 +34,17 @@ public class MainActivity extends AppCompatActivity {
                 long id = db.insert("todo", todo, insertValues);
             }
         });
+
+        LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
+
+        Cursor c = db.query("todo", new String[] {"id", "todo"}, null, null, null, null, null);
+        boolean mov = c.moveToFirst();
+
+        while (mov) {
+            TextView textView = new TextView(this);
+            textView.setText(String.format("id:%s, todo:%s", c.getString(0), c.getString(1)));
+            mov = c.moveToNext();
+            layout.addView(textView);
+        }
     }
 }
