@@ -14,7 +14,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table todo(" + "todo text not null," + ");");
+        db.execSQL("create table todo(id integer primary key autoincrement, todo text not null);");
     }
 
     @Override
