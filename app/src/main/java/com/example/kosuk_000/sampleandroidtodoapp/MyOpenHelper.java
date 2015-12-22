@@ -8,17 +8,26 @@ import android.database.sqlite.SQLiteOpenHelper;
  * Created by kosuk_000 on 2015/12/20.
  */
 public class MyOpenHelper extends SQLiteOpenHelper {
+
+    private static final String TODO_DB_CREATE =
+            "CREATE TABLE " + Todo.TODO_TABLE_NAME + " (" +
+                    Todo.COLUMN_NAME_ID + " INTEGER PRIMAEY KEY AUTOINCREMENT, " +
+                    Todo.COLUMN_NAME_TODO_CONTENT + " TEXT NOT NULL);";
+    private static final String TODO_TABLE_DELETE =
+            "DROP TABLE IF EXISTS " + Todo.TODO_TABLE_NAME;
+
     public MyOpenHelper(Context context) {
         super(context, "TodoDB", null, 1);
     }
 
     @Override
     public void onCreate(SQLiteDatabase db) {
-        db.execSQL("create table todo(id integer primary key autoincrement, todo text not null);");
+        db.execSQL(TODO_DB_CREATE);
     }
 
     @Override
     public  void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-
+        db.execSQL(TODO_TABLE_DELETE);
+        onCreate(db);
     }
 }
