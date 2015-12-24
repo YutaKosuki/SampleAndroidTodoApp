@@ -11,7 +11,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     private static final String TODO_DB_CREATE =
             "CREATE TABLE " + Todo.TODO_TABLE_NAME + " (" +
-                    Todo.COLUMN_NAME_ID + " INTEGER PRIMAEY KEY AUTOINCREMENT, " +
+                    Todo.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                     Todo.COLUMN_NAME_TODO_CONTENT + " TEXT NOT NULL);";
     private static final String TODO_TABLE_DELETE =
             "DROP TABLE IF EXISTS " + Todo.TODO_TABLE_NAME;
@@ -27,7 +27,5 @@ public class MyOpenHelper extends SQLiteOpenHelper {
 
     @Override
     public  void onUpgrade(SQLiteDatabase db, int oldVersion, int newVersion) {
-        db.execSQL(TODO_TABLE_DELETE);
-        onCreate(db);
     }
 }

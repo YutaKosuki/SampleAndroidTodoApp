@@ -30,12 +30,12 @@ public class MainActivity extends AppCompatActivity {
                 String todo = todoText.getText().toString();
 
                 ContentValues insertValues = new ContentValues();
-                insertValues.put("todo", todo);
-                long id = db.insert("todo", todo, insertValues);
+                insertValues.put(Todo.COLUMN_NAME_TODO_CONTENT, todo);
+                long id = db.insert(Todo.TODO_TABLE_NAME, todo, insertValues);
 
                 LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
                 TextView textView = new TextView(MainActivity.this);
-                textView.setText(String.format("id:%s, todo:%s", id, todo));
+                textView.setText(String.format("id:%s, content:%s", id, todo));
                 layout.addView(textView);
             }
         });
@@ -44,7 +44,7 @@ public class MainActivity extends AppCompatActivity {
         allDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                db.delete("todo", null, null);
+                db.delete(Todo.TODO_TABLE_NAME, null, null);
                 LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
                 layout.removeAllViews();
             }
@@ -52,12 +52,12 @@ public class MainActivity extends AppCompatActivity {
 
         LinearLayout layout = (LinearLayout) findViewById(R.id.doto_list);
 
-        Cursor c = db.query("todo", new String[] {"id", "todo"}, null, null, null, null, null);
+        Cursor c = db.query(Todo.TODO_TABLE_NAME, new String[] {Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TODO_CONTENT}, null, null, null, null, null);
         boolean mov = c.moveToFirst();
 
         while (mov) {
             TextView textView = new TextView(this);
-            textView.setText(String.format("id:%s, todo:%s", c.getString(0), c.getString(1)));
+            textView.setText(String.format("id:%s, content:%s", c.getString(0), c.getString(1)));
             mov = c.moveToNext();
             layout.addView(textView);
         }
