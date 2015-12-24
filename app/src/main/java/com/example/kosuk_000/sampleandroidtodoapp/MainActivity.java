@@ -1,11 +1,13 @@
 package com.example.kosuk_000.sampleandroidtodoapp;
 
 import android.content.ContentValues;
+import android.content.Intent;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.AdapterView;
 import android.widget.Button;
 import android.widget.CursorAdapter;
 import android.widget.EditText;
@@ -26,7 +28,7 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MyOpenHelper helper = new MyOpenHelper(this);
-        ListView listView = (ListView) findViewById(R.id.listView);
+        final ListView listView = (ListView) findViewById(R.id.listView);
         final SQLiteDatabase db = helper.getWritableDatabase();
 
         final EditText todoText = (EditText) findViewById(R.id.entry_todo);
@@ -64,7 +66,6 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-
         Button allDeleteButton = (Button) findViewById(R.id.btn_all_delete);
         allDeleteButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -73,6 +74,20 @@ public class MainActivity extends AppCompatActivity {
 
                 // データを再読み込みする
                 mSimpleCursorAdapter.getCursor().requery();
+            }
+        });
+
+
+        listView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> parent, View view, int position, long id) {
+                Cursor cursor = (Cursor) listView.getItemAtPosition(position);
+
+                Intent intent = new Intent(MainActivity.this, TodoDetailActivity.class);
+
+                intent.putExtra(Todo.COLUMN_NAME_ID, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_ID)));
+                intent.putExtra(Todo.COLUMN_NAME_TODO_CONTENT, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_TODO_CONTENT)));
+                startActivity(intent);
             }
         });
 
