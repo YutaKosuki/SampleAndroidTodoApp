@@ -7,7 +7,7 @@ package com.example.kosuk_000.sampleandroidtodoapp;
 public class Todo {
     public static final String TODO_TABLE_NAME = "todo";
 
-    public static final String COLUMN_NAME_ID = "id";
+    public static final String COLUMN_NAME_ID = "_id";
     public static final String COLUMN_NAME_TODO_CONTENT = "content";
 
     private String mContent;
