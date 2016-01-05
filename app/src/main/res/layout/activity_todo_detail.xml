@@ -10,25 +10,25 @@
     tools:context="com.example.kosuk_000.sampleandroidtodoapp.TodoDetailActivity">
 
     <TextView
-        android:text="@string/todo_name"
+        android:text="@string/todo_title"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/todo_detail_id"/>
+        android:id="@+id/todo_detail_title"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/todo_detail_id_data"
-        android:layout_below="@id/todo_detail_id"
+        android:id="@+id/todo_detail_title_data"
+        android:layout_below="@id/todo_detail_title"
         android:layout_alignParentLeft="true"
         android:layout_alignParentRight="true"
-        android:text="TodoのID:上書きされる予定"/>
+        android:text="Todoのタイトル:上書きされる予定"/>
 
     <TextView
         android:text="@string/todo_content"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:id="@+id/todo_detail_content"
-        android:layout_below="@+id/todo_detail_id_data"/>
+        android:layout_below="@+id/todo_detail_title_data"/>
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

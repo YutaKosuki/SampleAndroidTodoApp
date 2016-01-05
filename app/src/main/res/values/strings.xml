@@ -1,7 +1,11 @@
 <resources>
     <string name="app_name">SampleAndroidTodoApp</string>
     <string name="todo_name">Todo</string>
+    <string name="todo_title">タイトル</string>
     <string name="todo_content">内容</string>
+    <string name="todo_deadline">期限</string>
     <string name="btn_entry">登録</string>
+    <string name="btn_to_main">戻る</string>
     <string name="btn_all_delete">全て削除</string>
+    <string name="todo_entry_description">やることを入力してください</string>
 </resources>

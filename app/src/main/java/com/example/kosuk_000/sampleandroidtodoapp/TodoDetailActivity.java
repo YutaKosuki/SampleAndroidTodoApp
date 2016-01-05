@@ -15,11 +15,11 @@ public class TodoDetailActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
 
-        TextView textViewId = (TextView) findViewById(R.id.todo_detail_id_data);
-        textViewId.setText(intent.getStringExtra(Todo.COLUMN_NAME_ID));
+        TextView textViewId = (TextView) findViewById(R.id.todo_detail_title_data);
+        textViewId.setText(intent.getStringExtra(Todo.COLUMN_NAME_TITLE));
 
         TextView textViewContent = (TextView) findViewById(R.id.todo_detail_content_data);
-        textViewContent.setText(intent.getStringExtra(Todo.COLUMN_NAME_TITLE));
+        textViewContent.setText(intent.getStringExtra(Todo.COLUMN_NAME_CONTENT));
 
     }
 }

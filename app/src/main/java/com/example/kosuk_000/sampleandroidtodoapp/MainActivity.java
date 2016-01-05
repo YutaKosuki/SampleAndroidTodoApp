@@ -28,21 +28,21 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
         MyOpenHelper helper = new MyOpenHelper(this);
-        final ListView listView = (ListView) findViewById(R.id.listView);
         final SQLiteDatabase db = helper.getWritableDatabase();
 
-        final EditText todoText = (EditText) findViewById(R.id.entry_todo);
+        final ListView listView = (ListView) findViewById(R.id.listView);
 
         // データを取得
-        mCursor = db.query(Todo.TODO_TABLE_NAME, new String[] {Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TITLE}, null, null, null, null, null);
+        String [] columns = {Todo.COLUMN_NAME_TITLE};
+        mCursor = db.rawQuery("select * from " + Todo.TODO_TABLE_NAME, null);
 
         // UIにバインドするデータのカラム
         String[] from = {
-                Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TITLE
+                Todo.COLUMN_NAME_TITLE
         };
         // 指定したカラムのデータを表示するViewのID
         int[] to = {
-                R.id.todo_id, R.id.todo_content
+                R.id.todo_title
         };
 
         mSimpleCursorAdapter = new SimpleCursorAdapter(this, R.layout.listitembook, mCursor, from, to, CursorAdapter.FLAG_REGISTER_CONTENT_OBSERVER);
@@ -54,15 +54,8 @@ public class MainActivity extends AppCompatActivity {
             @Override
             public void onClick(View v) {
 
-                String todo = todoText.getText().toString();
-
-                ContentValues insertValues = new ContentValues();
-                insertValues.put(Todo.COLUMN_NAME_TITLE, todo);
-                long id = db.insert(Todo.TODO_TABLE_NAME, todo, insertValues);
-
-                // データを再読み込みする
-                mSimpleCursorAdapter.getCursor().requery();
-
+                Intent intent = new Intent(MainActivity.this, EntryActivity.class);
+                startActivity(intent);
             }
         });
 
@@ -85,8 +78,8 @@ public class MainActivity extends AppCompatActivity {
 
                 Intent intent = new Intent(MainActivity.this, TodoDetailActivity.class);
 
-                intent.putExtra(Todo.COLUMN_NAME_ID, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_ID)));
                 intent.putExtra(Todo.COLUMN_NAME_TITLE, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_TITLE)));
+                intent.putExtra(Todo.COLUMN_NAME_CONTENT, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_CONTENT)));
                 startActivity(intent);
             }
         });
