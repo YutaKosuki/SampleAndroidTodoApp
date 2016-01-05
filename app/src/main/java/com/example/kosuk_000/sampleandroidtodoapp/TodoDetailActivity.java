@@ -4,6 +4,8 @@ import android.content.Intent;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.View;
+import android.widget.Button;
 import android.widget.TextView;
 
 public class TodoDetailActivity extends AppCompatActivity {
@@ -21,5 +23,13 @@ public class TodoDetailActivity extends AppCompatActivity {
         TextView textViewContent = (TextView) findViewById(R.id.todo_detail_content_data);
         textViewContent.setText(intent.getStringExtra(Todo.COLUMN_NAME_CONTENT));
 
+        Button btn_to_main = (Button) findViewById(R.id.btn_to_main);
+        btn_to_main.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(TodoDetailActivity.this, MainActivity.class);
+                startActivity(intent);
+            }
+        });
     }
 }
