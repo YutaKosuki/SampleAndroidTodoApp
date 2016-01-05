@@ -80,6 +80,7 @@ public class MainActivity extends AppCompatActivity {
 
                 intent.putExtra(Todo.COLUMN_NAME_TITLE, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_TITLE)));
                 intent.putExtra(Todo.COLUMN_NAME_CONTENT, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_CONTENT)));
+                intent.putExtra(Todo.COLUMN_NAME_ID, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_ID)));
                 startActivity(intent);
             }
         });
