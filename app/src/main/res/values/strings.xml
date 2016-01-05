@@ -7,5 +7,6 @@
     <string name="btn_entry">登録</string>
     <string name="btn_to_main">戻る</string>
     <string name="btn_all_delete">全て削除</string>
+    <string name="btn_todo_delete">これは終了した</string>
     <string name="todo_entry_description">やることを入力してください</string>
 </resources>

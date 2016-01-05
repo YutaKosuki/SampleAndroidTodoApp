@@ -31,6 +31,7 @@ public class EntryActivity extends AppCompatActivity {
                 ContentValues insertValues = new ContentValues();
                 insertValues.put(Todo.COLUMN_NAME_TITLE, todo_title.getText().toString());
                 insertValues.put(Todo.COLUMN_NAME_CONTENT, todo_content.getText().toString());
+                insertValues.put(Todo.COLUMN_NAME_STATUS, Todo.STATUS_PROGRESS);
                 long id = db.insert(Todo.TODO_TABLE_NAME, null, insertValues);
 
                 Intent intent = new Intent(EntryActivity.this, MainActivity.class);

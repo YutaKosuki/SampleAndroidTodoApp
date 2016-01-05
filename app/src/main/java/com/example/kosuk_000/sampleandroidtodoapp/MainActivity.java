@@ -34,7 +34,7 @@ public class MainActivity extends AppCompatActivity {
 
         // データを取得
         String [] columns = {Todo.COLUMN_NAME_TITLE};
-        mCursor = db.rawQuery("select * from " + Todo.TODO_TABLE_NAME, null);
+        mCursor = db.rawQuery("select * from " + Todo.TODO_TABLE_NAME + " WHERE " + Todo.COLUMN_NAME_STATUS + " == '" + Todo.STATUS_PROGRESS + "'", null);
 
         // UIにバインドするデータのカラム
         String[] from = {
