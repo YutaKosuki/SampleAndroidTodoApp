@@ -34,11 +34,11 @@ public class MainActivity extends AppCompatActivity {
         final EditText todoText = (EditText) findViewById(R.id.entry_todo);
 
         // データを取得
-        mCursor = db.query(Todo.TODO_TABLE_NAME, new String[] {Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TODO_CONTENT}, null, null, null, null, null);
+        mCursor = db.query(Todo.TODO_TABLE_NAME, new String[] {Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TITLE}, null, null, null, null, null);
 
         // UIにバインドするデータのカラム
         String[] from = {
-                Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TODO_CONTENT
+                Todo.COLUMN_NAME_ID, Todo.COLUMN_NAME_TITLE
         };
         // 指定したカラムのデータを表示するViewのID
         int[] to = {
@@ -57,7 +57,7 @@ public class MainActivity extends AppCompatActivity {
                 String todo = todoText.getText().toString();
 
                 ContentValues insertValues = new ContentValues();
-                insertValues.put(Todo.COLUMN_NAME_TODO_CONTENT, todo);
+                insertValues.put(Todo.COLUMN_NAME_TITLE, todo);
                 long id = db.insert(Todo.TODO_TABLE_NAME, todo, insertValues);
 
                 // データを再読み込みする
@@ -86,7 +86,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent intent = new Intent(MainActivity.this, TodoDetailActivity.class);
 
                 intent.putExtra(Todo.COLUMN_NAME_ID, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_ID)));
-                intent.putExtra(Todo.COLUMN_NAME_TODO_CONTENT, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_TODO_CONTENT)));
+                intent.putExtra(Todo.COLUMN_NAME_TITLE, cursor.getString(cursor.getColumnIndex(Todo.COLUMN_NAME_TITLE)));
                 startActivity(intent);
             }
         });

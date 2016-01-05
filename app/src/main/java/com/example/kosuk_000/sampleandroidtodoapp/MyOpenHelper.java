@@ -12,7 +12,7 @@ public class MyOpenHelper extends SQLiteOpenHelper {
     private static final String TODO_DB_CREATE =
             "CREATE TABLE " + Todo.TODO_TABLE_NAME + " (" +
                     Todo.COLUMN_NAME_ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
-                    Todo.COLUMN_NAME_TODO_CONTENT + " TEXT NOT NULL);";
+                    Todo.COLUMN_NAME_TITLE + " TEXT NOT NULL);";
     private static final String TODO_TABLE_DELETE =
             "DROP TABLE IF EXISTS " + Todo.TODO_TABLE_NAME;
 

@@ -19,7 +19,7 @@ public class TodoDetailActivity extends AppCompatActivity {
         textViewId.setText(intent.getStringExtra(Todo.COLUMN_NAME_ID));
 
         TextView textViewContent = (TextView) findViewById(R.id.todo_detail_content_data);
-        textViewContent.setText(intent.getStringExtra(Todo.COLUMN_NAME_TODO_CONTENT));
+        textViewContent.setText(intent.getStringExtra(Todo.COLUMN_NAME_TITLE));
 
     }
 }
